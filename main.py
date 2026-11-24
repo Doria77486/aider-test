@@ -1,6 +1,6 @@
-"""aider-test 的 CLI 入口。
+"""CLI entry point for aider-test.
 
-用法：
+Usage:
     python3 main.py add 1 2
     python3 main.py div 10 4
 """
@@ -13,21 +13,21 @@ from utils import format_result, parse_number, warn
 
 def run(argv):
     if len(argv) != 4:
-        warn("用法: main.py <op> <a> <b>")
+        warn("usage: main.py <op> <a> <b>")
         return 1
 
     _, op, a_text, b_text = argv
 
     if op not in OPERATIONS:
-        warn(f"未知操作: {op}")
-        warn(f"可用操作: {', '.join(sorted(OPERATIONS))}")
+        warn(f"unknown operation: {op}")
+        warn(f"available operations: {', '.join(sorted(OPERATIONS))}")
         return 1
 
     try:
         a = parse_number(a_text)
         b = parse_number(b_text)
     except ValueError:
-        warn("参数必须是数字")
+        warn("arguments must be numbers")
         return 1
 
     result = OPERATIONS[op](a, b)

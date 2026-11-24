@@ -1,6 +1,6 @@
-"""四则运算与幂运算。
+"""Basic arithmetic and exponentiation.
 
-故意保持简单，方便测试 aider 的编辑行为。
+Kept deliberately simple so that aider's edit behavior is easy to observe.
 """
 
 
@@ -17,7 +17,7 @@ def mul(a, b):
 
 
 def div(a, b):
-    # TODO: 没有处理 b == 0 的情况
+    # TODO: b == 0 is not handled
     return a / b
 
 

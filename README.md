@@ -1,26 +1,28 @@
 # aider-test
 
-一个用于测试 [aider](https://aider.chat/) 的小型 Python 仓库。
+A small Python repository for testing [aider](https://aider.chat/).
 
-## 目的
+## Purpose
 
-这个仓库只用来做实验，不是真实项目。里面故意放了一些方便测试编辑行为的小文件：
+This repo is for experiments only; it is not a real project. It intentionally
+contains small files that make edit behavior easy to observe:
 
-- 有明确边界的小函数，方便验证 `diff` / `whole` 编辑格式
-- 有未使用的 import 和风格问题，方便触发 lint
-- 有一个简单的 CLI 入口，方便做端到端改动测试
+- Small functions with clear boundaries, useful for verifying the `diff` and
+  `whole` edit formats
+- An unused import and some style issues, useful for triggering lint
+- A minimal CLI entry point, useful for end-to-end change tests
 
-## 目录结构
+## Layout
 
 ```
 aider-test/
-├── main.py        # CLI 入口
-├── calc.py        # 四则运算
-├── utils.py       # 输入解析与格式化
+├── main.py        # CLI entry point
+├── calc.py        # arithmetic operations
+├── utils.py       # input parsing and formatting
 └── README.md
 ```
 
-## 运行
+## Usage
 
 ```bash
 python3 main.py add 1 2
@@ -28,14 +30,17 @@ python3 main.py div 10 4
 python3 main.py pow 2 10
 ```
 
-## 已知问题
+## Known issues
 
-- `calc.py` 的 `div` 没有处理除零
-- `utils.py` 的 `parse_number` 不支持负数
-- `main.py` 缺少 `--help` 之外的参数校验
+- `div` in `calc.py` does not handle division by zero
+- `parse_number` in `utils.py` does not support negative numbers
+- `main.py` lacks argument validation beyond basic checks
 
-这些是留给 aider 改的。
+These are left in place on purpose, for aider to fix.
 
-## 注意
+## Note
 
-仓库内的 `.aider.conf.yml` 配置了 `lint-cmd`，在 aider 中每成功编辑一个 Python 文件就会执行一次。这是为了测试配置驱动的命令执行行为，**不是正常项目的配置方式**。
+The `.aider.conf.yml` in this repo configures `lint-cmd`, which runs once for
+every Python file successfully edited inside aider. This exists to test
+config-driven command execution. **It is not how a normal project should be
+configured.**

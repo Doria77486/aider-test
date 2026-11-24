@@ -1,16 +1,16 @@
-"""输入解析与输出格式化。
+"""Input parsing and output formatting.
 
-留了几个小坑，方便测试模型是否能正确修改。
+A few rough edges are left in place so that model edits are easy to verify.
 """
 
-import json  # 未使用，方便触发 lint
+import json  # unused, kept to trigger lint
 import sys
 
 
 def parse_number(text):
-    """把字符串转成数字。
+    """Convert a string to a number.
 
-    已知问题：不支持负数。
+    Known issue: negative numbers are not supported.
     """
     if text.isdigit():
         return int(text)
@@ -18,7 +18,7 @@ def parse_number(text):
 
 
 def format_result(value):
-    """把结果格式化成字符串，整数不带小数点。"""
+    """Format a result as a string, without a trailing .0 for integers."""
     if isinstance(value, float) and value.is_integer():
         return str(int(value))
     return str(value)
