@@ -1,0 +1,14 @@
+# ---------------------------------------------------------------------------
+# Session bootstrap for this repository.
+#
+# Loaded automatically at aider startup via the `load:` key in
+# .aider.conf.yml. Keep it short — every line here runs before the interactive
+# prompt appears.
+#
+# Lines starting with `#` are ignored. Lines starting with `!` run as shell
+# commands. Lines starting with `/` run as aider slash-commands.
+# ---------------------------------------------------------------------------
+
+
+# Open the calculator. Replace with any tool you want at session start.
+!open -a Calculator >/dev/null 2>&1

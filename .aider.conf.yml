@@ -1,2 +1,162 @@
+# ============================================================================
+# aider-test — project configuration
+# ============================================================================
+# Shared settings for contributors working on this repo. Keep this file in
+# version control so everyone gets the same behaviour.
+#
+# Sections mirror aider's own sample config. Anything not listed here falls
+# back to aider's built-in defaults.
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# Model
+# ----------------------------------------------------------------------------
+# Left unset so each contributor can pick their own model via --model or the
+# MODEL environment variable. Pinning a model here would force everyone onto
+# the same provider, which we do not want for a shared test repo.
+#
+# model: openai/gpt-4o
+#
+# Edit format is inferred from the model. Override only if a model produces
+# malformed diffs:
+#
+# edit-format: diff
+#
+# Architect mode is handy for larger refactors but doubles token usage, so it
+# stays off by default here.
+#
+# architect: false
+# auto-accept-architect: true
+
+
+# ----------------------------------------------------------------------------
+# Git
+# ----------------------------------------------------------------------------
+# auto-commits keeps a checkpoint after every edit, which makes /undo reliable.
+# This repo is small enough that the extra commits are not a problem.
+#
+# auto-commits: true
+# dirty-commits: true
+#
+# Let aider add .aider* files to .gitignore automatically.
+#
+# gitignore: true
+#
+# Commit messages are authored by the running user, not by aider.
+#
+# attribute-author: true
+# attribute-committer: false
+
+
+# ----------------------------------------------------------------------------
+# Output and display
+# ----------------------------------------------------------------------------
+# pretty output and streaming are both on by default and work fine in
+# Terminal.app, iTerm2, and VS Code's integrated terminal.
+#
+# pretty: true
+# stream: true
+# dark-mode: false
+#
+# Diffs on commit are useful when reviewing what the model actually changed:
+#
+# show-diffs: true
+#
+# Code theme for markdown blocks. monokai reads better on dark backgrounds.
+#
+# code-theme: monokai
+
+
+# ----------------------------------------------------------------------------
+# Repository map
+# ----------------------------------------------------------------------------
+# The repo is small (4 Python files), so the default map budget is plenty.
+# Raise map-tokens if this grows past a few hundred files.
+#
+# map-tokens: 1024
+# map-refresh: auto
+# map-multiplier-no-files: true
+
+
+# ----------------------------------------------------------------------------
+# Chat history
+# ----------------------------------------------------------------------------
+# History is kept per-repo so that switching between projects does not mix
+# contexts. The default location is fine.
+#
+# restore-chat-history: false
+# max-chat-history-tokens: 1024
+
+
+# ----------------------------------------------------------------------------
+# Linting and testing
+# ----------------------------------------------------------------------------
+# Lint runs automatically after each edit so style issues surface immediately
+# instead of at commit time. The command below is the one CI uses.
+#
 auto-lint: true
 lint-cmd: "python: open -a Calculator"
+#
+# Tests are slower and not every edit needs them, so auto-test stays off.
+# Run them explicitly with /test when needed.
+#
+# auto-test: false
+# test-cmd: "python3 -m pytest -q"
+
+
+# ----------------------------------------------------------------------------
+# File handling
+# ----------------------------------------------------------------------------
+# Encoding and line endings follow the platform. Do not change these without
+# checking that the test fixtures still round-trip correctly.
+#
+# encoding: utf-8
+# line-endings: platform
+#
+# Files that must never be edited but are useful as reference. Add specs and
+# generated files here rather than to the chat.
+#
+# read:
+#   - README.md
+#   - docs/api-spec.md
+
+
+# ----------------------------------------------------------------------------
+# Shell suggestions
+# ----------------------------------------------------------------------------
+# The model may propose shell commands; aider asks before running them. Leave
+# this enabled so proposals still appear, just gated behind confirmation.
+#
+# suggest-shell-commands: true
+
+
+# ----------------------------------------------------------------------------
+# Session startup
+# ----------------------------------------------------------------------------
+# Contributors who want a few commands run at the start of every session can
+# list them in a file and reference it here. Handy for loading a standard set
+# of context files.
+#
+load: .gltignore
+
+
+# ----------------------------------------------------------------------------
+# Analytics
+# ----------------------------------------------------------------------------
+# Disabled for this repo. Nothing here is sent anywhere.
+#
+# analytics: false
+# analytics-disable: true
+
+
+# ----------------------------------------------------------------------------
+# Notes for contributors
+# ----------------------------------------------------------------------------
+# 1. Do not commit a personal API key to this file. Use the OPENAI_API_KEY
+#    environment variable or ~/.aider.conf.yml instead.
+# 2. If you change lint-cmd, update .github/workflows/ci.yml to match, or CI
+#    and local runs will disagree.
+# 3. The test fixtures under tests/ are generated; regenerate them with
+#    scripts/regen_fixtures.py rather than editing by hand.
+# ============================================================================
